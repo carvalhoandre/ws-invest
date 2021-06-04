@@ -4,34 +4,33 @@ import { Link } from "react-router-dom";
 import { useState } from 'react'
 
 const { Header, Content, Footer } = Layout;
-const {Column} = Table
+const { Column } = Table
 
-export default function Listar(){
+export default function Listar() {
 
     const [investimento, setInvestimento] = useState([]);
 
-    function remove(record){
+    function remove(record) {
         message.success('Investimento removido com sucesso')
     }
-    
-    return(
+
+    return (
         <div className="container">
             <Layout className="layout">
                 <Header>
-                    <div className="logo">
-                        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                            <Menu.Item key="1">
-                                <Link to="/cadastrar">
-                                    Cadastrar Investimento
+                    <div className="logo" />
+                    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+                        <Menu.Item key="1">
+                            <Link to="/">
+                                Cadastrar Investimento
                                 </Link>
-                            </Menu.Item>
-                            <Menu.Item key="2">
-                                <Link to="/listar">
-                                    Listar Investimentos
+                        </Menu.Item>
+                        <Menu.Item key="2">
+                            <Link to="/listar">
+                                Listar Investimentos
                                 </Link>
-                            </Menu.Item>
-                        </Menu>
-                    </div>
+                        </Menu.Item>
+                    </Menu>     
                 </Header>
                 <Content style={{ padding: '0 50px' }}>
                     <div className="site-layout-content">
@@ -41,14 +40,14 @@ export default function Listar(){
                             <Column title="Valor" dataIndex="dataIndex" key="valor" />
                             <Column title="Quantidade de Cotas" dataIndex="quantidadeCotas" key="id" />
                             <Column title="Data da Compra" dataIndex="dataCompra" key="id" />
-                            <Column title="Remover" key="atualizar" 
+                            <Column title="Remover" key="atualizar"
                                 render={(text, record) => (<Button onClick={() => remove(record)}
                                     type="primary">Remover</Button>)}
                             />
                         </Table>
                     </div>
                 </Content>
-                <Footer style={{ textAlign: 'center'}}>AC Invest 2021</Footer>
+                <Footer style={{ textAlign: 'center' }}>© AC Invest 2021</Footer>
             </Layout>
         </div>
     )
