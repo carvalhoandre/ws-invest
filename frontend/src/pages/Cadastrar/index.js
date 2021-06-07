@@ -1,5 +1,7 @@
 import { Form, Button, message, DatePicker, Layout, Menu, Input, InputNumber } from "antd";
+
 import { Link } from 'react-router-dom'
+import { saveInvestimento } from "../../service/services";
 
 const { Header, Content, Footer } = Layout;
 
@@ -20,6 +22,8 @@ export default function Cadastrar() {
     };
 
     const onFinish = (values) => {
+        console.log(values)
+        saveInvestimento(values)
         message.success("Inestimento salvo com sucesso")
     }
 
@@ -85,7 +89,7 @@ export default function Cadastrar() {
                             </Form.Item>
                             <Form.Item
                                 label="Quantidade de cotas"
-                                name="cotas"
+                                name="cota"
                                 rules={[
                                     {
                                         required: true,
@@ -103,10 +107,17 @@ export default function Cadastrar() {
                                     {
                                         required: true,
                                         message: 'Insira a data da compra!'
-                                    }
+                                    },
                                 ]}
                             >
                                 <DatePicker />
+                            </Form.Item>
+
+                            <Form.Item
+                                label="Categoria"
+                                name="categoria"
+                            >
+                                <Input />
                             </Form.Item>
 
                             <Form.Item {...tailLayout}>
