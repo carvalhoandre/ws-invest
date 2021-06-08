@@ -16,7 +16,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.andrecarvalho.acinvest.domain.Investment;
 import com.andrecarvalho.acinvest.dto.InvestmentDTO;
-import com.andrecarvalho.acinvest.dto.InvestmentNewDTO;
 import com.andrecarvalho.acinvest.service.InvestmentService;
 
 @RestController
@@ -45,7 +44,7 @@ public class InvestmentResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody InvestmentNewDTO objDto) {
+	public ResponseEntity<Void> insert(@RequestBody InvestmentDTO objDto) {
 		Investment obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()

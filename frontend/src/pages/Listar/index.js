@@ -1,7 +1,11 @@
+import { useEffect, useState } from 'react'
 import "antd/dist/antd.css"
-import { Table, Button, message, Layout, Menu } from 'antd'
 import { Link } from "react-router-dom";
-import { useState } from 'react'
+
+import { Table, Button, message, Layout, Menu } from 'antd'
+
+import { retrieveAllInvestimento } from '../../service/services';
+
 
 const { Header, Content, Footer } = Layout;
 const { Column } = Table
@@ -9,6 +13,13 @@ const { Column } = Table
 export default function Listar() {
 
     const [investimento, setInvestimento] = useState([]);
+
+    useEffect(() => {
+        retrieveAllInvestimento()
+            .then(response => {
+                setInvestimento(response.data)
+            })
+    }, [investimento])
 
     function remove(record) {
         message.success('Investimento removido com sucesso')
@@ -30,22 +41,23 @@ export default function Listar() {
                                 Listar Investimentos
                                 </Link>
                         </Menu.Item>
-                    </Menu>     
+                    </Menu>
                 </Header>
                 <Content style={{ padding: '0 50px' }}>
                     <div className="site-layout-content">
                         <h2>INVESTIMENTOS</h2>
                         <Table data={investimento}>
-                            <Column title="Código do ativo" dataIndex="codigoAtivo" key="id" />
-                            <Column title="Valor" dataIndex="dataIndex" key="valor" />
-                            <Column title="Quantidade de Cotas" dataIndex="quantidadeCotas" key="id" />
-                            <Column title="Data da Compra" dataIndex="dataCompra" key="id" />
+                            <Column title="Código do ativo" dataIndex="active" key="active" />
+                            <Column title="Valor" dataIndex="value" key="value" />
+                            <Column title="Quantidade de Cotas" dataIndex="quota" key="quota" />
+                            <Column title="Data da Compra" dataIndex="purchase" key="purchase" />
                             <Column title="Remover" key="atualizar"
                                 render={(text, record) => (<Button onClick={() => remove(record)}
                                     type="primary">Remover</Button>)}
                             />
                         </Table>
                     </div>
+                    
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>© AC Invest 2021</Footer>
             </Layout>

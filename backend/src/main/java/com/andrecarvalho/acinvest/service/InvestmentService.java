@@ -16,8 +16,6 @@ import com.andrecarvalho.acinvest.repository.InvestmentRepository;
 import com.andrecarvalho.acinvest.service.exceptions.DataIntegrityException;
 import com.andrecarvalho.acinvest.service.exceptions.ObjectNotFoundException;
 
-
-
 @Service
 public class InvestmentService {
 	

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
 
 import com.andrecarvalho.acinvest.domain.Category;
 import com.andrecarvalho.acinvest.domain.Investment;
@@ -14,6 +15,7 @@ import com.andrecarvalho.acinvest.repository.CategoryRepository;
 import com.andrecarvalho.acinvest.service.exceptions.DataIntegrityException;
 import com.andrecarvalho.acinvest.service.exceptions.ObjectNotFoundException;
 
+@Service
 public class CategoryService {
 
 	@Autowired

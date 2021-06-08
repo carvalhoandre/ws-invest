@@ -1,8 +1,9 @@
 package com.andrecarvalho.acinvest.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
+import com.andrecarvalho.acinvest.domain.Category;
 import com.andrecarvalho.acinvest.domain.Investment;
 
 
@@ -17,18 +18,24 @@ public class InvestmentDTO implements Serializable {
 	
 	private Integer quota;
 	
-	private Date purchase;
+	private LocalDate purchase;
 
+	private String name;
+	
+	private String description;
 
 	public InvestmentDTO() {
 	}
-	
-	public InvestmentDTO(Long id, String active, Double value, Integer quota, Date purchase) {
+
+	public InvestmentDTO(Long id, String active, Double value, Integer quota, LocalDate purchase, String name,
+			String description) {
 		this.id = id;
 		this.active = active;
 		this.value = value;
 		this.quota = quota;
 		this.purchase = purchase;
+		this.name = name;
+		this.description = description;
 	}
 
 	public InvestmentDTO(Investment entity) {
@@ -37,6 +44,11 @@ public class InvestmentDTO implements Serializable {
 		value = entity.getValue();
 		quota = entity.getQuota();
 		purchase = entity.getPurchase();
+	}
+	
+	public InvestmentDTO(Category entity) {
+		name = entity.getName();
+		description = entity.getDescription();
 	}
 
 	public Long getId() {
@@ -71,11 +83,27 @@ public class InvestmentDTO implements Serializable {
 		this.quota = quota;
 	}
 
-	public Date getPurchase() {
+	public LocalDate getPurchase() {
 		return purchase;
 	}
 
-	public void setPurchase(Date purchase) {
+	public void setPurchase(LocalDate purchase) {
 		this.purchase = purchase;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

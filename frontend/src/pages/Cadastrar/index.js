@@ -64,7 +64,7 @@ export default function Cadastrar() {
                         >
                             <Form.Item
                                 label="Código do ativo"
-                                name="codigoAtivo"
+                                name="active"
                                 rules={[
                                     {
                                         required: true,
@@ -77,7 +77,7 @@ export default function Cadastrar() {
 
                             <Form.Item
                                 label="Valor"
-                                name="valor"
+                                name="value"
                                 rules={[
                                     {
                                         required: true,
@@ -89,7 +89,7 @@ export default function Cadastrar() {
                             </Form.Item>
                             <Form.Item
                                 label="Quantidade de cotas"
-                                name="cota"
+                                name="quota"
                                 rules={[
                                     {
                                         required: true,
@@ -102,7 +102,7 @@ export default function Cadastrar() {
 
                             <Form.Item
                                 label="Data da Compra"
-                                name="dataCompra"
+                                name="purchase"
                                 rules={[
                                     {
                                         required: true,
@@ -115,7 +115,7 @@ export default function Cadastrar() {
 
                             <Form.Item
                                 label="Categoria"
-                                name="categoria"
+                                name="category"
                             >
                                 <Input />
                             </Form.Item>

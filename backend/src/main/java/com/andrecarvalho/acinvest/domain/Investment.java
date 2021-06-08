@@ -1,6 +1,6 @@
 package com.andrecarvalho.acinvest.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +24,7 @@ public class Investment {
 	
 	private Integer quota;
 	
-	private Date purchase;
+	private LocalDate purchase;
 	
 	@ManyToOne
 	@JoinColumn(name="fk_id_category")
@@ -33,7 +33,7 @@ public class Investment {
 	public Investment() {
 	}
 	
-	public Investment(Long id, String active, Double value, Integer quota, Date purchase, Category category) {
+	public Investment(Long id, String active, Double value, Integer quota, LocalDate purchase, Category category) {
 		this.id = id;
 		this.active = active;
 		this.value = value;
@@ -74,11 +74,11 @@ public class Investment {
 		this.quota = quota;
 	}
 
-	public Date getPurchase() {
+	public LocalDate getPurchase() {
 		return purchase;
 	}
 
-	public void setPurchase(Date purchase) {
+	public void setPurchase(LocalDate purchase) {
 		this.purchase = purchase;
 	}
 

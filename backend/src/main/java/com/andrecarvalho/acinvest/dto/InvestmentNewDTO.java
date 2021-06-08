@@ -1,6 +1,6 @@
 package com.andrecarvalho.acinvest.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class InvestmentNewDTO {
 	
@@ -12,7 +12,7 @@ public class InvestmentNewDTO {
 	
 	private Integer quota;
 	
-	private Date purchase;
+	private LocalDate purchase;
 	
 	private String name;
 	
@@ -53,11 +53,11 @@ public class InvestmentNewDTO {
 		this.quota = quota;
 	}
 
-	public Date getPurchase() {
+	public LocalDate getPurchase() {
 		return purchase;
 	}
 
-	public void setPurchase(Date purchase) {
+	public void setPurchase(LocalDate purchase) {
 		this.purchase = purchase;
 	}
 
