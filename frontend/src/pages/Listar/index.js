@@ -63,7 +63,7 @@ export default function Listar() {
                             <Column title="Quantidade de Cotas" dataIndex="quota" key="quota" />
                             <Column title="Data da Compra" dataIndex="purchase" key="purchase" />
                             <Column title="Remover" key="atualizar"
-                                render={(text, record) => (<Button onClick={() => remove(record.id)}
+                                render={(_text, record) => (<Button onClick={() => remove(record.id)}
                                     type="primary">Remover</Button>)}
                             />
                         </Table>

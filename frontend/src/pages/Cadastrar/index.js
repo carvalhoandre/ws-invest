@@ -17,7 +17,7 @@ export default function Cadastrar() {
         return () => {
 
         }
-    }, [categorias])
+    }, [categorias, categoria])
 
     async function refreshCategorias() {
         retrieveAllCategoria()
