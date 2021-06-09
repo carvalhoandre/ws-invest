@@ -140,7 +140,7 @@ export default function Cadastrar() {
                                 label="Categoria"
                                 name="category"
                             >
-                                <Select style={{ width: '50%' }} onChange={handleChange}>
+                                <Select style={{ width: '80%' }} onChange={handleChange}>
                                     {categorias.map((item, index) => {
                                         return (
                                             <Option key={item.id} value={index} >
