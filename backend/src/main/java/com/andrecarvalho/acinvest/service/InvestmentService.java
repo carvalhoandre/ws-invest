@@ -33,7 +33,6 @@ public class InvestmentService {
 	}
 	
 	public void delete(Long id) {
-		findAllById(id);
 		try {
 			repo.deleteById(id);
 		}catch(DataIntegrityViolationException e) {

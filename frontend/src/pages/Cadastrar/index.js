@@ -1,11 +1,32 @@
-import { Form, Button, message, DatePicker, Layout, Menu, Input, InputNumber } from "antd";
+import { Form, Button, message, DatePicker, Layout, Menu, Input, InputNumber, Select } from "antd";
+import { useEffect, useState } from "react";
 
 import { Link } from 'react-router-dom'
-import { saveInvestimento } from "../../service/services";
+import { retrieveAllCategoria, saveInvestimento } from "../../service/services";
 
 const { Header, Content, Footer } = Layout;
+const { Option } = Select;
 
 export default function Cadastrar() {
+
+    const [categorias, setCategorias] = useState([]);
+    const [categoria, setCategoria] = useState(null);
+
+    useEffect(() => {
+        refreshCategorias();
+        return () => {
+
+        }
+    }, [categorias])
+
+    async function refreshCategorias() {
+        retrieveAllCategoria()
+            .then(
+                response => {
+                    setCategorias(response.data)
+                }
+            )
+    }
 
     const layout = {
         labelCol: {
@@ -32,7 +53,9 @@ export default function Cadastrar() {
         console.log('Failde: ', values)
     }
 
-
+    function handleChange(value) {
+        setCategoria(value)
+    }
 
     return (
         <div className="contianer">
@@ -117,7 +140,15 @@ export default function Cadastrar() {
                                 label="Categoria"
                                 name="category"
                             >
-                                <Input />
+                                <Select style={{ width: '50%' }} onChange={handleChange}>
+                                    {categorias.map((item, index) => {
+                                        return (
+                                            <Option key={item.id} value={index} >
+                                                {item.name}
+                                            </Option>
+                                        )
+                                    })}
+                                </Select>
                             </Form.Item>
 
                             <Form.Item {...tailLayout}>

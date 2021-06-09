@@ -32,13 +32,13 @@ public class InvestmentResource {
 		return ResponseEntity.ok(list);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value="/{id}")
 	public ResponseEntity<Investment> findById(@PathVariable Long id) {
 		Investment obj = service.findAllById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping(value="/{id}")
 	public void delete(@PathVariable Long id) {
 		service.delete(id);
 	}

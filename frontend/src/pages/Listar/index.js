@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { Table, Button, message, Layout, Menu } from 'antd'
 
-import { retrieveAllInvestimento } from '../../service/services';
+import { retrieveAllInvestimento, deleteInvestimento } from '../../service/services';
 
 
 const { Header, Content, Footer } = Layout;
@@ -15,13 +15,24 @@ export default function Listar() {
     const [investimento, setInvestimento] = useState([]);
 
     useEffect(() => {
-        retrieveAllInvestimento()
-            .then(response => {
-                setInvestimento(response.data)
-            })
+        refreshInvestimento();
+        return () => {
+
+        }
     }, [investimento])
 
+    async function refreshInvestimento(){
+        retrieveAllInvestimento()
+            .then(
+                response => {
+                    console.log(response)
+                    setInvestimento(response.data)
+                }
+            )
+    }
+
     function remove(record) {
+        deleteInvestimento(record)
         message.success('Investimento removido com sucesso')
     }
 
@@ -46,13 +57,13 @@ export default function Listar() {
                 <Content style={{ padding: '0 50px' }}>
                     <div className="site-layout-content">
                         <h2>INVESTIMENTOS</h2>
-                        <Table data={investimento}>
+                        <Table dataSource={investimento}>
                             <Column title="Código do ativo" dataIndex="active" key="active" />
                             <Column title="Valor" dataIndex="value" key="value" />
                             <Column title="Quantidade de Cotas" dataIndex="quota" key="quota" />
                             <Column title="Data da Compra" dataIndex="purchase" key="purchase" />
                             <Column title="Remover" key="atualizar"
-                                render={(text, record) => (<Button onClick={() => remove(record)}
+                                render={(text, record) => (<Button onClick={() => remove(record.id)}
                                     type="primary">Remover</Button>)}
                             />
                         </Table>
